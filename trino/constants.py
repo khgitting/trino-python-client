@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from typing import Any, Optional
 
 
@@ -27,20 +28,22 @@ HTTPS = "https"
 
 URL_STATEMENT_PATH = "/v1/statement"
 
-HEADER_CATALOG = "X-Trino-Catalog"
-HEADER_SCHEMA = "X-Trino-Schema"
-HEADER_SOURCE = "X-Trino-Source"
-HEADER_USER = "X-Trino-User"
-HEADER_CLIENT_INFO = "X-Trino-Client-Info"
-HEADER_EXTRA_CREDENTIAL = "X-Trino-Extra-Credential"
+TRINO_OR_PRESTO = os.environ.get("TRINO_OR_PRESTO_HTTP_HEADER", "Trino")
 
-HEADER_SESSION = "X-Trino-Session"
-HEADER_SET_SESSION = "X-Trino-Set-Session"
-HEADER_CLEAR_SESSION = "X-Trino-Clear-Session"
+HEADER_CATALOG = f"X-{TRINO_OR_PRESTO}-Catalog"
+HEADER_SCHEMA = f"X-{TRINO_OR_PRESTO}-Schema"
+HEADER_SOURCE = f"X-{TRINO_OR_PRESTO}-Source"
+HEADER_USER = f"X-{TRINO_OR_PRESTO}-User"
+HEADER_CLIENT_INFO = f"X-{TRINO_OR_PRESTO}-Client-Info"
+HEADER_EXTRA_CREDENTIAL = f"X-{TRINO_OR_PRESTO}-Extra-Credential"
 
-HEADER_STARTED_TRANSACTION = "X-Trino-Started-Transaction-Id"
-HEADER_TRANSACTION = "X-Trino-Transaction-Id"
+HEADER_SESSION = f"X-{TRINO_OR_PRESTO}-Session"
+HEADER_SET_SESSION = f"X-{TRINO_OR_PRESTO}-Set-Session"
+HEADER_CLEAR_SESSION = f"X-{TRINO_OR_PRESTO}-Clear-Session"
 
-HEADER_PREPARED_STATEMENT = 'X-Trino-Prepared-Statement'
-HEADER_ADDED_PREPARE = 'X-Trino-Added-Prepare'
-HEADER_DEALLOCATED_PREPARE = 'X-Trino-Deallocated-Prepare'
+HEADER_STARTED_TRANSACTION = f"X-{TRINO_OR_PRESTO}-Started-Transaction-Id"
+HEADER_TRANSACTION = f"X-{TRINO_OR_PRESTO}-Transaction-Id"
+
+HEADER_PREPARED_STATEMENT = f'X-{TRINO_OR_PRESTO}-Prepared-Statement'
+HEADER_ADDED_PREPARE = f'X-{TRINO_OR_PRESTO}-Added-Prepare'
+HEADER_DEALLOCATED_PREPARE = f'X-{TRINO_OR_PRESTO}-Deallocated-Prepare'
